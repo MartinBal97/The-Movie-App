@@ -27,17 +27,17 @@ const contFavs = document.querySelector(".contFavs");
 
 
 const docRef = doc(db, "favoritos", "user1");
-const docSnap = await getDoc(docRef).then(res => res)  
+const favoritos = await getDoc(docRef).then(res => res.data().favoritos || [] )  
 
 
-if (docSnap.exists()) {
-  console.log(docSnap.data().favoritos);
-} else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
-}
+// if (docSnap.exists()) {
+//   console.log(docSnap.data().favoritos);
+// } else {
+//   // doc.data() will be undefined in this case
+//   console.log("No such document!");
+// }
 
-const favoritos = docSnap.data().favoritos || [];
+// const favoritos = docSnap.data().favoritos || [];
 contFavs.innerText = favoritos.length;
 
 const containerMovie = document.querySelector(".containerMovie");
