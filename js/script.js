@@ -19,20 +19,19 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app)
 
-
 const docRef = doc(db, "favoritos", "user1");
-const favoritos = await getDoc(docRef).then(res => res.data().favoritos || [] )  
+const favoritos = await getDoc(docRef).then(res => res.data().favoritos)  
 
 
-// if (docSnap.exists()) {
-//   console.log(docSnap.data().favoritos);
+// if (favoritos.exists()) {
+//      favoritos = await getDoc(docRef).then(res => res.data().favoritos)
 // } else {
-//   // doc.data() will be undefined in this case
-//   console.log("No such document!");
+//      favoritos = []
 // }
 
-// const favoritos = docSnap.data().favoritos || [];
 const contFavs = document.querySelector(".contFavs");
+contFavs.innerText = favoritos.length
+
 
 
 const inputTextMovie = document.querySelector('#inputSearch')
@@ -40,12 +39,20 @@ const moviesContainer = document.querySelector('.moviesContainer')
 const apiKey = "f22a5ed8"
 
 
-contFavs.innerText = favoritos.length
-
 //Se realiza fetch a la api pasando como parametro el valor del input
 const getDataApi = async (inputValue) => {
     const res = await fetch(`http://www.omdbapi.com/?s=${inputValue}&apikey=${apiKey}`)
-    return await res.json()
+    
+    const moviesCreated = doc(db, "Movies Created", inputValue);
+    const movieCreated = await getDoc(moviesCreated).then(res => res.data())
+    const newArray = await res.json().then(res => res.Search)
+    
+    if (movieCreated != undefined) {
+        await newArray.unshift(movieCreated);
+        console.log(await newArray);
+    }
+    
+    return await newArray
 }
 
 //Obteniendo valor del unput
@@ -55,11 +62,11 @@ document.querySelector("#lupa").addEventListener('click', () => {
     if (getInputValue() == "") {
         moviesContainer.innerHTML = `<p class="alert pelis">Debes escribir algo</p>`;
     } else {
-        getDataApi(getInputValue()).then(data => {
+        getDataApi(getInputValue()).then(newArray => {
             if (moviesContainer.children.length > 0) {
                 moviesContainer.innerHTML = ``
             }
-            (data.Search).forEach((e) => {
+            newArray.forEach((e) => {
                 moviesContainer.innerHTML += `
                     <div class="pelis">
                         <img src="${e.Poster}" alt="${e.Title}">

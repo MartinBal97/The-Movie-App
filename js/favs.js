@@ -19,20 +19,14 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
  const db = getFirestore(app)
 
+//HAGO REFERECIA A LOS DATOS DE MI BASE DE DATOS
 const docRef = doc(db, "favoritos", "user1");
+// DE ESA REFERENCIA OBTENGO LOS DATOS, SI NO HAY NADA QUE SEA UN ARRAY VACIO
 const favoritos = await getDoc(docRef).then(res => res.data().favoritos || [] )  
 
-// if (docSnap.exists()) {
-//   //console.log(docSnap.data().favoritos);
-//   const favoritos = docSnap.data().favoritos || [];
-// } else {
-//   // doc.data() will be undefined in this case
-//   console.log("No such document!");
-// }
-
 const contFavs = document.querySelector(".contFavs");
-
 contFavs.innerText = favoritos.length;
+
 
 const moviesContainer = document.querySelector('.moviesContainer')
 
@@ -53,11 +47,10 @@ document.querySelectorAll('.btn-delete').forEach((botonDelete)=> {
         favoritos.splice(favoritos.findIndex(e=>e.Title === event.target.parentNode.children[2].innerText),1)
         try {
             await setDoc(doc(db, "favoritos","user1"), {favoritos});
+            contFavs.innerText = favoritos.length;
         } catch (e) {
         console.error("Error adding document: ", e);
         }
-        //localStorage.setItem('favoritos',JSON.stringify(favoritos))
-        contFavs.innerText = favoritos.length;
     })
 })
 

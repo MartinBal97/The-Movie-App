@@ -1,149 +1,318 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Cabin', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Cabin", sans-serif;
+  box-sizing: border-box;
 }
-a{
-    color: white;
-    text-decoration: none;
+
+.moviesContainer .imgMain {
+  width: 100%;
+  margin-top: 3rem;
+  border-radius: 30px;
+  box-shadow: rgba(109, 109, 109, 0.2) 0px 30px 40px -7px;
+  filter: blur(3px);
 }
+
+.moviesContainer .contentMain {
+  position: relative;
+  bottom: 28.5rem;
+  padding: 2rem;
+  background-color: rgba(44, 44, 44, 0.4);
+  box-shadow: rgba(41, 41, 41, 0.4) 0px 30px 40px -7px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.moviesContainer .titleContent {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
 body {
-    background-color: rgb(27, 30, 56);
-    color: white;
+  background-color: rgb(27, 30, 56);
+  color: white;
+}
 
+header {
+  display: flex;
+  padding: 1rem;
+  background-color: rgb(27, 30, 56);
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
 }
-header{
-    display: flex;
-    padding: 1rem;
-    background-color: rgb(27, 30, 56);
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid grey;
-}
+
 header h1 {
-    margin-left: 4rem;
-}
-.containerBuscador {
-    display: flex;
-    align-items: center;
-}
-.favs {
-    display: flex;
-    align-items: center;
-    margin: 0 4rem 0 1rem;
-    padding: 0 5px;
-}
-.favs .contFavs{
-    position: relative;
-    right: 1.6rem;
-    font-size: 1.1rem;
-}
-.favs img{
-    margin-left: 1rem;
-}
-.buscador {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-right: 1px solid grey;
-}
-.buscador #lupa{
-    margin: 0 1rem;
-    padding: 5px;
-    cursor:pointer
- }
-.buscador input {
-    padding: 7px;
-}
-.moviesContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
+  margin-left: 4rem;
 }
 
-.moviesContainer .pelis{
-    padding: 0.5rem 0.5rem 1rem 0.5rem;
-    text-align: center;
-    border: 1px solid rgb(61, 60, 60);
-    border-radius: 4px;
-    margin: 0.5rem;
-    width: 320px;
+.containerBuscador {
+  display: flex;
+  align-items: center;
 }
-.moviesContainer .pelis img{
-    border: 1px solid rgb(61, 60, 60);
-    border-radius: 4px;
+
+.favs {
+  display: flex;
+  align-items: center;
+  margin: 0 4rem 0 1rem;
+  padding: 0 5px;
 }
-.moviesContainer .pelis h4{
-    margin: 1rem 0;
+
+.favs .contFavs {
+  position: relative;
+  right: 1.6rem;
+  font-size: 1.1rem;
 }
-.moviesContainer .pelis .btnDetalle{
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: dodgerblue;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    text-decoration: none;
+
+.favs img {
+  margin-left: 1rem;
 }
+
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid grey;
+}
+
+.buscador #lupa {
+  margin: 0 1rem;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.buscador input {
+  padding: 7px;
+}
+
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.moviesContainer .pelis {
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  text-align: center;
+  background-color: rgb(15, 15, 47);
+  border: 1px solid rgb(61, 60, 60);
+  border-radius: 4px;
+  margin: 0.5rem;
+  width: 320px;
+}
+
+.moviesContainer .pelis img {
+  border: 1px solid rgb(61, 60, 60);
+  border-radius: 4px;
+}
+
+.moviesContainer .pelis h4 {
+  margin: 1rem 0;
+}
+
+.moviesContainer .pelis .btnDetalle {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(30, 143, 255);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 /*****MovieDetalle*****/
 h2 {
-    text-align: center;
-    margin: 2rem;
-    font-size: 2.5rem;
+  text-align: center;
+  margin: 2rem;
+  font-size: 2.5rem;
 }
+
 .movie {
-    display: flex;
-    border: 1px solid rgb(61, 60, 60);
-    border-radius: 4px;
-    margin: 0 2rem;
+  display: flex;
+  border: 1px solid rgb(61, 60, 60);
+  background-color: rgb(15, 15, 47);
+  border-radius: 4px;
+  margin: 0 2rem;
 }
+
 .movie img {
-    border-radius: 4px;
+  border-radius: 4px;
 }
-.movie .infoMovie{
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+.movie .infoMovie {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.movie .infoMovie .addFav{
-    width: fit-content;
-    padding: 0.3rem 0.9rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+
+.movie .infoMovie .addFav {
+  width: fit-content;
+  padding: 0.3rem 0.9rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
-.movie .infoMovie > *{
-    margin: 1rem 0;
+
+.movie .infoMovie > * {
+  margin: 1rem 0;
 }
+
 /*****FAVS*****/
 .btn-delete {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgb(222, 99, 99);
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(222, 99, 99);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/*****CreateMOvie*****/
+.titleCreateMovie {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 2rem;
+}
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 540px;
+  margin: 2rem auto 0 auto;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 80px;
+}
+
+.cut-short {
+  width: 80px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #808097;
+}
+
+.input:focus ~ .placeholder {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
 }
 
 /****JS*****/
-.alert{
-    display: inline-block;
-    margin: 4rem !important;
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 3rem !important;
-    border-radius: 15px;
-    width: 50% !important;
-    color: rgb(241, 208, 208);
-    background-color: rgba(237, 19, 19, 0.7);
+.alert {
+  display: inline-block;
+  margin: 4rem !important;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 3rem !important;
+  border-radius: 15px;
+  width: 50% !important;
+  color: rgb(241, 208, 208);
+  background-color: rgba(237, 19, 19, 0.7);
 }
