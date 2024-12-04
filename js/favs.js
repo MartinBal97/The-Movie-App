@@ -1,35 +1,4 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import {
-  getFirestore,
-  getDoc,
-  doc,
-  setDoc,
-} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAJpCAKkCJSZ2qubIdIsDbL54Gd4TxE5AI",
-  authDomain: "movie-app-c86af.firebaseapp.com",
-  projectId: "movie-app-c86af",
-  storageBucket: "movie-app-c86af.appspot.com",
-  messagingSenderId: "773996011389",
-  appId: "1:773996011389:web:165f06fbf54bbca24c7614",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-
-//HAGO REFERECIA A LOS DATOS DE MI BASE DE DATOS
-const docRef = doc(db, "favoritos", "user1");
-// DE ESA REFERENCIA OBTENGO LOS DATOS, SI NO HAY NADA QUE SEA UN ARRAY VACIO
-const favoritos = await getDoc(docRef).then(
-  (res) => res.data().favoritos || []
-);
+const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
 const contFavs = document.querySelector(".contFavs");
 contFavs.innerText = favoritos.length;
@@ -56,8 +25,9 @@ document.querySelectorAll(".btn-delete").forEach((botonDelete) => {
       ),
       1
     );
+
     try {
-      await setDoc(doc(db, "favoritos", "user1"), { favoritos });
+      localStorage.setItem("favoritos", JSON.stringify(favoritos));
       contFavs.innerText = favoritos.length;
     } catch (e) {
       console.error("Error adding document: ", e);
